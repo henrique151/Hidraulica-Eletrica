@@ -11337,6 +11337,12 @@ header.masthead .masthead-heading {
   color: var(--bs-primary);
 }
 
+.footer-background {
+  background: #212529;
+}
+
+
+
 @media (min-width: 768px) {
   header.masthead {
     padding-top: 20rem;
