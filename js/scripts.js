@@ -40,3 +40,10 @@ window.addEventListener("DOMContentLoaded", (event) => {
     });
   });
 });
+
+window.addEventListener("load", () => {
+  const loader = document.getElementById("loader-wrapper");
+  if (loader) {
+    loader.style.display = "none";
+  }
+});
