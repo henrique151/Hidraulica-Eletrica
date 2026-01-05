@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <meta name="description" content="" />
     <meta name="author" content="" />
-    <title>Soluções em hidráulica e elétrica</title>
+    <title>Soluções em Hidráulica e Elétrica</title>
     <!-- Favicon-->
     <link rel="icon" type="image/x-icon" href="assets/img/background.png" />
     <!-- Font Awesome icons -->
@@ -18,6 +18,11 @@
     <!-- Core theme CSS (includes Bootstrap)-->
     <link href="css/styles.css" rel="stylesheet" />
     <link href="css/loading.css" rel="stylesheet" />
+    <!-- EmailJS API-->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+    <script src="https://unpkg.com/imask"></script>
+    <!-- Toastify JS-->
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
 </head>
 
 <a id="whatsapp-link" href="https://wa.me/5511912494624" class="whatsapp-float" target="_blank"
@@ -199,7 +204,7 @@
         <div class="container px-4 px-lg-5">
             <div class="row gx-4 gx-lg-5 justify-content-center">
                 <div class="col-lg-8 col-xl-6 text-center">
-                    <h2 class="mt-0">Entre em Contato!</h2>
+                    <h2 class="mt-0 btn-titulo">Entre em Contato!</h2>
                     <hr class="divider" />
                     <p class="text-muted mb-5">
                         Pronto para iniciar seu próximo projeto conosco?
@@ -210,7 +215,7 @@
 
             <div class="row gx-4 gx-lg-5 justify-content-center mb-5">
                 <div class="col-lg-6">
-                    <form id="contactForm">
+                    <form id="contactForm" method="post">
                         <!-- Nome -->
                         <div class="form-floating mb-3">
                             <input class="form-control" id="name" type="text" placeholder="Digite seu nome completo"
@@ -244,13 +249,21 @@
                             </div>
                         </div>
 
-                        <!-- Assunto -->
+                        <!-- Serviço -->
                         <div class="form-floating mb-3">
-                            <input class="form-control" id="subject" type="text" placeholder="Assunto da mensagem"
-                                data-sb-validations="required" />
-                            <label for="subject">Assunto</label>
+                            <select class="form-control" id="subject" data-sb-validations="required">
+                                <option value="" disabled selected>Selecione o tipo de serviço</option>
+                                <option value="Reparos Hidráulicos">Reparos Hidráulicos</option>
+                                <option value="Desentupimentos">Desentupimentos</option>
+                                <option value="Caça-vazamentos">Caça-vazamentos</option>
+                                <option value="Ajustes em sistemas">Ajustes em sistemas</option>
+                                <option value="Instalações completas">Instalações completas</option>
+                                <option value="Troca de peças hidráulicas">Troca de peças hidráulicas</option>
+                                <option value="Outro Serviço">Outro Serviço</option>
+                            </select>
+                            <label for="subject">Serviço</label>
                             <div class="invalid-feedback" data-sb-feedback="subject:required">
-                                O assunto é obrigatório.
+                                O serviço é obrigatório.
                             </div>
                         </div>
 
@@ -291,10 +304,9 @@
             </div>
 
             <!-- Informações de contato -->
-            <!-- Informações de contato -->
             <div class="row gx-4 gx-lg-5 justify-content-center">
                 <!-- Endereço -->
-                <div class="col-lg-4 text-center mb-5 mb-lg-0">
+                <div class="col-lg-4 text-center mb-3 mb-lg-0">
                     <i class="bi-house fs-2 mb-3 text-muted"></i>
                     <div class="fw-bold">São Paulo - SP</div>
                     <div class="text-muted">
@@ -302,7 +314,7 @@
                     </div>
                 </div>
                 <!-- Telefone -->
-                <div class="col-lg-4 text-center mb-5 mb-lg-0">
+                <div class="col-lg-4 text-center mb-3 mb-lg-0">
                     <i class="bi-phone fs-2 mb-3 text-muted"></i>
                     <div class="fw-bold">+55 (11) 99999-9999</div>
                     <div class="text-muted">
@@ -310,8 +322,8 @@
                     </div>
                 </div>
                 <!-- Email -->
-                <div class="col-lg-4 text-center mb-5 mb-lg-0">
-                    <i class="bi-envelope fs-2 mb-3 text-muted"></i>
+                <div class="col-lg-4 text-center mb-3 mb-lg-0">
+                    <i class="bi-envelope fs-2 mb-3 text-mute"></i>
                     <div class="fw-bold">exemplo@gmail.com</div>
                     <div class="text-muted">
                         Ou, se preferir, preencha o formulário ao lado
@@ -329,11 +341,11 @@
             </div>
         </div>
     </footer>
-
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
     <!-- Bootstrap core JS-->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
     <!-- Core theme JS-->
-    <script src="js/scripts.js"></script>
+    <script src="js/scripts.js" type="module"></script>
 </body>
 
 </html>
