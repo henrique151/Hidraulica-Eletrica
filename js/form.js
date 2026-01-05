@@ -73,10 +73,12 @@ export const initContactForm = () => {
       submitButton.disabled = true;
       showToast("Enviando e-mail...", "info");
 
-      emailjs.init("tsMjbKlsnyYBnsGic");
+      // Inicializa o EmailJS com a chave pública do arquivo de configuração
+      emailjs.init(window.emailjsConfig.publicKey);
 
-      const serviceID = "service_025yoxq";
-      const templateID = "template_1xyb4us";
+      // Obtém o Service ID e o Template ID do arquivo de configuração
+      const serviceID = window.emailjsConfig.serviceID;
+      const templateID = window.emailjsConfig.templateID;
 
       const formData = {
         name: nameInput.value,

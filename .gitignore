@@ -1,0 +1,2 @@
+# Ignorar arquivos de configuração que contêm chaves ou senhas
+js/config.js
