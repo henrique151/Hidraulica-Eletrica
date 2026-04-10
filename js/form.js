@@ -90,6 +90,8 @@ export const initContactForm = () => {
       message: messageInput.value,
     };
 
+
+    alert("Dados:", formData)
     try {
       const response = await fetch("/api/contact", {
         method: "POST",
@@ -99,6 +101,7 @@ export const initContactForm = () => {
         body: JSON.stringify(formData),
       });
 
+     
       if (!response.ok) throw new Error("Erro no envio");
 
       showToast("E-mail enviado com sucesso!", "success");
