@@ -91,31 +91,34 @@ export const initContactForm = () => {
     };
 
 
-    alert("Dados:", formData)
-    try {
-      const response = await fetch("/api/contact", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(formData),
-      });
+    alert("Dados:", formData.name, formData.email, formData.phone, formData.subject, formData.message);
+    showToast("Dados:", formData.name, formData.email, formData.phone, formData.subject, formData.message, "success");
+    form.reset();
+    if (phoneMask) phoneMask.updateValue();
+    // try {
+    //   const response = await fetch("/api/contact", {
+    //     method: "POST",
+    //     headers: {
+    //       "Content-Type": "application/json",
+    //     },
+    //     body: JSON.stringify(formData),
+    //   });
 
      
-      if (!response.ok) throw new Error("Erro no envio");
+    //   if (!response.ok) throw new Error("Erro no envio");
 
-      showToast("E-mail enviado com sucesso!", "success");
-      form.reset();
-      if (phoneMask) phoneMask.updateValue();
+    //   showToast("E-mail enviado com sucesso!", "success");
+    //   form.reset();
+    //   if (phoneMask) phoneMask.updateValue();
 
-    } catch (error) {
-      console.error("FAILED...", error);
-      submitButton.disabled = false;
+    // } catch (error) {
+    //   console.error("FAILED...", error);
+    //   submitButton.disabled = false;
 
-      showToast(
-        "Falha ao enviar. Verifique sua conexão ou tente mais tarde.",
-        "error"
-      );
-    }
+    //   showToast(
+    //     "Falha ao enviar. Verifique sua conexão ou tente mais tarde.",
+    //     "error"
+    //   );
+    // }
   });
 };
