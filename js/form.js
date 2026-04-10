@@ -80,7 +80,7 @@ export const initContactForm = () => {
     }
 
     submitButton.disabled = true;
-    showToast("Enviando...", "info");
+    // showToast("Enviando...", "info");
 
     const formData = {
       name: nameInput.value,
@@ -91,8 +91,15 @@ export const initContactForm = () => {
     };
 
 
-    alert("Dados:", formData.name, formData.email, formData.phone, formData.subject, formData.message);
-    showToast("Dados:", formData.name, formData.email, formData.phone, formData.subject, formData.message, "success");
+    // alert("Dados:", formData.name, formData.email, formData.phone, formData.subject, formData.message);
+    showToast(
+    `Nome: ${formData.name}
+     Email: ${formData.email}
+     Telefone: ${formData.phone}
+     Assunto: ${formData.subject}
+     Mensagem: ${formData.message}`,
+    "success"
+);
     form.reset();
     if (phoneMask) phoneMask.updateValue();
     // try {
