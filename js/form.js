@@ -21,7 +21,7 @@ export const initContactForm = () => {
     });
   });
 
-  form.addEventListener("submit", function (event) {
+  form.addEventListener("submit", async function (event) {
     event.preventDefault();
 
     const nameInput = document.getElementById("name");
@@ -48,71 +48,71 @@ export const initContactForm = () => {
     inputs.forEach((input) => input.classList.remove("is-invalid"));
 
     let isValid = true;
+
     if (nameInput.value.trim() === "") {
       nameInput.classList.add("is-invalid");
       isValid = false;
     }
+
     if (!ValidacaoEmail(emailInput.value)) {
       emailInput.classList.add("is-invalid");
       isValid = false;
     }
+
     if (phoneInput && !phonePattern.test(phoneInput.value)) {
       phoneInput.classList.add("is-invalid");
       isValid = false;
     }
+
     if (subjectInput.value.trim() === "") {
       subjectInput.classList.add("is-invalid");
       isValid = false;
     }
+
     if (messageInput.value.trim() === "") {
       messageInput.classList.add("is-invalid");
       isValid = false;
     }
 
-    if (isValid) {
-      submitButton.disabled = true;
-      showToast("Enviando e-mail...", "info");
-
-      // Inicializa o EmailJS com a chave pública do arquivo de configuração
-      emailjs.init(window.emailjsConfig.publicKey);
-
-      // Obtém o Service ID e o Template ID do arquivo de configuração
-      const serviceID = window.emailjsConfig.serviceID;
-      const templateID = window.emailjsConfig.templateID;
-
-      const formData = {
-        name: nameInput.value,
-        email: emailInput.value,
-        phone: phoneInput.value,
-        subject: subjectInput.value,
-        message: messageInput.value,
-      };
-
-      emailjs.send(serviceID, templateID, formData).then(
-        (response) => {
-          console.log("SUCCESS!", response.status, response.text);
-          showToast("E-mail enviado com sucesso!", "success");
-          form.reset();
-          if (phoneMask) phoneMask.updateValue();
-        },
-        (error) => {
-          console.log("FAILED...", error);
-          submitButton.disabled = false;
-          if (error.status === 429) {
-            showToast(
-              "Você atingiu o limite de envios. Tente novamente mais tarde.",
-              "error"
-            );
-          } else {
-            showToast(
-              "Falha ao enviar o e-mail. Verifique sua conexão.",
-              "error"
-            );
-          }
-        }
-      );
-    } else {
+    if (!isValid) {
       showToast("Por favor, corrija os campos inválidos.", "error");
+      return;
+    }
+
+    submitButton.disabled = true;
+    showToast("Enviando...", "info");
+
+    const formData = {
+      name: nameInput.value,
+      email: emailInput.value,
+      phone: phoneInput.value,
+      subject: subjectInput.value,
+      message: messageInput.value,
+    };
+
+    try {
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
+
+      if (!response.ok) throw new Error("Erro no envio");
+
+      showToast("E-mail enviado com sucesso!", "success");
+      form.reset();
+      if (phoneMask) phoneMask.updateValue();
+
+    } catch (error) {
+      console.error("FAILED...", error);
+      submitButton.disabled = false;
+
+      showToast(
+        "Falha ao enviar. Verifique sua conexão ou tente mais tarde.",
+        "error"
+      );
     }
   });
 };
