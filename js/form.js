@@ -97,7 +97,8 @@ export const initContactForm = () => {
      Email: ${formData.email}
      Telefone: ${formData.phone}
      Assunto: ${formData.subject}
-     Mensagem: ${formData.message}`,
+     Mensagem: ${formData.message}
+    `,
     "success"
 );
     form.reset();
