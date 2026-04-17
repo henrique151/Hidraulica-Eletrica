@@ -218,7 +218,7 @@
                     <form id="contactForm" method="post">
                         <!-- Nome -->
                         <div class="form-floating mb-3">
-                            <input class="form-control" id="name" type="text" placeholder="Digite seu nome completo"
+                            <input class="form-control" name="name" id="name" type="text" placeholder="Digite seu nome completo"
                                 data-sb-validations="required" />
                             <label for="name">Nome completo</label>
                             <div class="invalid-feedback" data-sb-feedback="name:required">
@@ -228,7 +228,7 @@
 
                         <!-- Email -->
                         <div class="form-floating mb-3">
-                            <input class="form-control" id="email" type="email" placeholder="nome@exemplo.com"
+                            <input class="form-control" name="email" id="email" type="email" placeholder="nome@exemplo.com"
                                 data-sb-validations="required,email" />
                             <label for="email">E-mail</label>
                             <div class="invalid-feedback" data-sb-feedback="email:required">
@@ -241,7 +241,7 @@
 
                         <!-- Telefone -->
                         <div class="form-floating mb-3">
-                            <input class="form-control" id="phone" type="tel" placeholder="(11) 99999-9999"
+                            <input class="form-control" name="phone" id="phone" type="tel" placeholder="(11) 99999-9999"
                                 data-sb-validations="required" />
                             <label for="phone">Telefone</label>
                             <div class="invalid-feedback" data-sb-feedback="phone:required">
@@ -251,7 +251,7 @@
 
                         <!-- Serviço -->
                         <div class="form-floating mb-3">
-                            <select class="form-control" id="subject" data-sb-validations="required">
+                            <select class="form-control"  name="subject" id="subject" data-sb-validations="required">
                                 <option value="" disabled selected>Selecione o tipo de serviço</option>
                                 <option value="Reparos Hidráulicos">Reparos Hidráulicos</option>
                                 <option value="Desentupimentos">Desentupimentos</option>
@@ -269,7 +269,7 @@
 
                         <!-- Mensagem -->
                         <div class="form-floating mb-3">
-                            <textarea class="form-control" id="message" placeholder="Digite sua mensagem aqui..."
+                            <textarea class="form-control" name="subject" id="message" placeholder="Digite sua mensagem aqui..."
                                 style="height: 10rem" data-sb-validations="required"></textarea>
                             <label for="message">Mensagem</label>
                             <div class="invalid-feedback" data-sb-feedback="message:required">
